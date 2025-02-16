@@ -12,5 +12,5 @@ metadata:
 spec:
   highAvailability: true
   storageGB: 20
-  version: 16.7
+  version: 16.2
   compositeDeletePolicy: Background
