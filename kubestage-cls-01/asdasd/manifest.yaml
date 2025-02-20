@@ -1,0 +1,41 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: asdasd
+spec:
+  acme:
+    externalAccountBinding:
+      keySecretRef:
+        name: asdasd
+      keyID: asdasdasd
+    privateKeySecretRef:
+      name: asdasd
+    server: asdasd
+  ca:
+    secretName: asdasd
+  vault:
+    auth:
+      appRole:
+        secretRef:
+          name: asdasd
+        path: asdasd
+        roleId: asdasdasd
+      kubernetes:
+        secretRef:
+          name: asdasd
+        role: asdasd
+      tokenSecretRef:
+        name: asdasd
+    caBundleSecretRef:
+      name: asdasd
+    path: asdasd
+    server: asdasd
+  venafi:
+    cloud:
+      apiTokenSecretRef:
+        name: asdasd
+    tpp:
+      credentialsRef:
+        name: asdasd
+      url: asdasd
+    zone: asdasd
