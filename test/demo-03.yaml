@@ -1,0 +1,18 @@
+apiVersion: ipam.cluster.x-k8s.io/v1alpha1
+kind: IPAddressClaim
+metadata:
+  name: demo-03
+  namespace: test
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"namespace-scoped","basePath":"test"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/system: test
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/test/demo-03.yaml
+spec:
+  owner: group:default/allcompany
+  poolRef:
+    apiGroup: ipam.cluster.x-k8s.io/v1alpha1
+    kind: InClusterIPPool
+    name: demo-03
