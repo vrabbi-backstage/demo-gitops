@@ -1,0 +1,37 @@
+apiVersion: demo.terasky.com/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"kubestage/asd/Application"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/all_users
+    terasky.backstage.io/system: asd
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/kubestage/asd/Application/asd.yaml
+  name: asd
+  namespace: asd
+spec:
+  db:
+    required: true
+    size: small
+    type: postgresql
+  network:
+    ingress:
+      enabled: true
+      tls: false
+      host: dfgdfg.dfgdfg
+      path: dfg
+    service:
+      containerPort: 8080
+      targetPort: 80
+      type: ClusterIP
+  image:
+    repository: dfgdfg
+    tag: dfgdfg
+  compositeDeletePolicy: Background
+  writeConnectionSecretToRef:
+    name: sdf
+  compositionUpdatePolicy: Automatic
+  compositionRef:
+    name: app-demo
