@@ -1,0 +1,18 @@
+apiVersion: example.crossplane.io/v1
+kind: App
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"local-v2/sdf/App"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/aad_dc_administrators
+    terasky.backstage.io/system: sdf
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/local-v2/sdf/App/asddddddddddddddddddd.yaml
+  name: asddddddddddddddddddd
+  namespace: sdf
+spec:
+  image: nginx
+  crossplane:
+    compositeDeletePolicy: Background
+    compositionSelectionStrategy: runtime
