@@ -1,0 +1,37 @@
+apiVersion: demo.terasky.com/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"kubestage/sdfsdf/Application"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/acc-skadden
+    terasky.backstage.io/system: sdfsdf
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/kubestage/sdfsdf/Application/sdfssssssss.yaml
+  name: sdfssssssss
+  namespace: sdfsdf
+spec:
+  db:
+    required: true
+    size: small
+    type: postgresql
+  network:
+    ingress:
+      enabled: true
+      tls: true
+      host: sdfsdf
+      path: sss
+    service:
+      containerPort: 234234
+      targetPort: 234
+      type: ClusterIP
+  compositeDeletePolicy: Background
+  image:
+    repository: sdf
+    tag: sdfsdf
+  compositionUpdatePolicy: Automatic
+  compositionRef:
+    name: app-demo
+  writeConnectionSecretToRef:
+    name: sdfsdf
