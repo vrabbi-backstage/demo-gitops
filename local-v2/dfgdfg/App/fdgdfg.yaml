@@ -1,0 +1,15 @@
+apiVersion: example.crossplane.io/v1
+kind: App
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"local-v2/dfgdfg/App"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/acc-skadden
+    terasky.backstage.io/system: dfgdfg
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/local-v2/dfgdfg/App/fdgdfg.yaml
+  name: fdgdfg
+  namespace: dfgdfg
+spec:
+  image: nginx
