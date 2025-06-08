@@ -1,0 +1,20 @@
+apiVersion: demo.terasky.com/v1alpha1
+kind: PostgreSQLDatabase
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"kubestage/asd/PostgreSQLDatabase"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/10root
+    terasky.backstage.io/system: asd
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/kubestage/asd/PostgreSQLDatabase/asdasddddddddddddd.yaml
+  name: asdasddddddddddddd
+  namespace: asd
+spec:
+  highAvailability: true
+  storageGB: 10
+  version: 16.7
+  compositeDeletePolicy: Background
+  writeConnectionSecretToRef:
+    name: asdasd
