@@ -1,0 +1,18 @@
+apiVersion: demo.terasky.com/v1alpha1
+kind: PostgreSQLDatabase
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"kubestage/sdf/PostgreSQLDatabase"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/acc-skadden
+    terasky.backstage.io/system: sdf
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/kubestage/sdf/PostgreSQLDatabase/sdfsdffffffffffffffffffffffffffffffff.yaml
+  name: sdfsdffffffffffffffffffffffffffffffff
+  namespace: sdf
+spec:
+  highAvailability: true
+  storageGB: 10
+  version: 16.2
+  compositeDeletePolicy: Background
