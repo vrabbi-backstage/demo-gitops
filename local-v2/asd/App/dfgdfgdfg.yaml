@@ -1,0 +1,20 @@
+apiVersion: example.crossplane.io/v1
+kind: App
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"local-v2/asd/App"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/acc-skadden
+    terasky.backstage.io/system: asd
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/local-v2/asd/App/dfgdfgdfg.yaml
+  name: dfgdfgdfg
+  namespace: asd
+spec:
+  image: nginx
+  crossplane:
+    compositeDeletePolicy: Background
+    compositionUpdatePolicy: Automatic
+    compositionRef:
+      name: app-templated-yaml
