@@ -1,0 +1,17 @@
+apiVersion: example.clustered.crossplane.io/v1
+kind: ClusterApp
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"namespace-scoped","basePath":"undefined"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/10root
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/undefined/aaaadsdsd.yaml
+  name: aaaadsdsd
+spec:
+  image: fghfgh
+  namespace: fghfgh
+  crossplane:
+    compositeDeletePolicy: Background
+    compositionSelectionStrategy: runtime
