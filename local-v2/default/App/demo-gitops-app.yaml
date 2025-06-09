@@ -2,17 +2,15 @@ apiVersion: example.crossplane.io/v1
 kind: App
 metadata:
   annotations:
-    terasky.backstage.io/source-info: >-
-      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"local-v2/default/App"}
-    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/source-info: '{"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"local-v2/default/App"}'
+    terasky.backstage.io/add-to-catalog: "true"
     terasky.backstage.io/owner: group:default/all_users
     terasky.backstage.io/system: default
-    terasky.backstage.io/source-file-url: >-
-      https://github.com/vrabbi-backstage/demo-gitops/blob/main/local-v2/default/App/demo-gitops-app.yaml
+    terasky.backstage.io/source-file-url: https://github.com/vrabbi-backstage/demo-gitops/blob/main/local-v2/default/App/demo-gitops-app.yaml
   name: demo-gitops-app
   namespace: default
 spec:
   image: nginx
   crossplane:
     compositionRef:
-      name: app-templated-yaml
+      name: app-templated-yaml-2
