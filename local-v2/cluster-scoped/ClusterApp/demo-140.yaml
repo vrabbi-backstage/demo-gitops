@@ -1,0 +1,14 @@
+apiVersion: example.clustered.crossplane.io/v1
+kind: ClusterApp
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"local-v2/undefined/ClusterApp"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/aft-mgmt-lab-shahar
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/local-v2/cluster-scoped/ClusterApp/demo-140.yaml
+  name: demo-140
+spec:
+  image: nginx
+  namespace: fghfgh
