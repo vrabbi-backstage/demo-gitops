@@ -1,0 +1,39 @@
+apiVersion: demo.terasky.com/v1alpha1
+kind: VMSet
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"test-04/asd/VMSet"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/niv-test
+    terasky.backstage.io/system: asd
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/test-04/asd/VMSet/sdfsdfsdf.yaml
+  name: sdfsdfsdf
+  namespace: asd
+spec:
+  guestCustomization:
+    bootstrapCommands: |-
+      - - apt
+        - update
+      - - apt
+        - install
+        - apache2
+        - -y
+  loadBalancing:
+    enabled: true
+    exposure: Internal
+    ports:
+      - name: web
+        port: 8080
+        protocol: TCP
+        targetPort: 8080
+  baseName: sdf
+  count: 34
+  os: ubuntu-24.04
+  powerState: PoweredOn
+  size: medium
+  supervisorNamespace: asd
+  compositeDeletePolicy: Background
+  compositionRef:
+    name: xvmset-demo
