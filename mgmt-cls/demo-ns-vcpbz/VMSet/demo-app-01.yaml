@@ -1,0 +1,45 @@
+apiVersion: demo.terasky.com/v1alpha1
+kind: VMSet
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"mgmt-cls/demo-ns-vcpbz/VMSet"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: user:default/admin
+    terasky.backstage.io/system: demo-ns-vcpbz
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/mgmt-cls/demo-ns-vcpbz/VMSet/demo-app-01.yaml
+  name: demo-app-01
+  namespace: demo-ns-vcpbz
+spec:
+  guestCustomization:
+    users:
+      - admin: true
+        groups:
+          - sudo
+        shell: /bin/bash
+        sshAuthorizedKeys:
+          - >-
+            ssh-rsa
+            AAAAB3NzaC1yc2EAAAADAQABAAABgQDMbprNuzofXBf7L41MPcVMrEb0xQgw9AaSDBvRowrHr/BNCTEm05v0CnTEmEnEP8WgG963SoiIIFQ2EsHC+Tyt4oROTMPDMe7L8KmhzfDqvneUVj8ax86FdT0sVPdl+s/pWAmAa6SB8m8BFJZBpTpw1MXQH+cfwZJoOk5QGcj0Xi8vDQJucngDKwvKhCQ7sWdLTFgohmpJS7GFOe0ea4/78aEsb1Ulj4MfET2t8LkZBngHDad8jkyok8tXg5zsIptqt9kqQDcl48u1MOw5CUfnaK6TN0dOT2km46IWPWaPQCRmMoLVwcNkOzOlS7Bb0n8wfdTtx13BFuVt9a0LYaysT//6lVOlotNTOOKASGazGzM+zLPlIOTrG7OHw8StsG65LHZbp2r3kmi2IgImHuuhd4lCyeTlWR2ik+2SWmNM06jwYijjPoDijuDj7m+5OSW0SrllJHVWyp4Qe9/zBXEMSiRytd2PI6F/qy2MOfeKupvt1hwKdQmOJA/s314aESs=
+            vrabbi@DESKTOP-OLSRC3G
+        name: scott
+    bootstrapCommands: |-
+      apt update -y
+      apt install -y apache2
+      systemctl enable apache2 && systemctl start apache2
+  loadBalancing:
+    enabled: true
+    exposure: External
+    ports:
+      - name: http
+        port: 80
+        protocol: TCP
+        targetPort: 80
+  baseName: cp-test-02
+  count: 2
+  os: ubuntu-24.04
+  powerState: PoweredOn
+  size: medium
+  supervisorNamespace: demo-ns-vcpbz
+  compositeDeletePolicy: Background
