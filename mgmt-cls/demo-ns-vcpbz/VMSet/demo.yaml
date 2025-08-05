@@ -1,0 +1,34 @@
+apiVersion: demo.terasky.com/v1alpha1
+kind: VMSet
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"mgmt-cls/demo-ns-vcpbz/VMSet"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: user:default/admin
+    terasky.backstage.io/system: demo-ns-vcpbz
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/mgmt-cls/demo-ns-vcpbz/VMSet/demo.yaml
+  name: demo
+  namespace: demo-ns-vcpbz
+spec:
+  guestCustomization:
+    files:
+      - permissions: '0644'
+    users:
+      - admin: true
+        shell: /bin/bash
+        name: scott
+    bootstrapCommands: |-
+      apt update
+      apt install apache2 -y
+  loadBalancing:
+    enabled: true
+    exposure: External
+  baseName: cp-test-03
+  count: 4
+  os: ubuntu-24.04
+  powerState: PoweredOff
+  size: medium
+  supervisorNamespace: demo-ns-vcpbz
+  compositeDeletePolicy: Background
