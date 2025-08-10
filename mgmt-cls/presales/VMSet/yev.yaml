@@ -1,0 +1,43 @@
+apiVersion: demo.terasky.com/v1alpha1
+kind: VMSet
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"mgmt-cls/presales/VMSet"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/all_users
+    terasky.backstage.io/system: presales
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/mgmt-cls/presales/VMSet/yev.yaml
+  name: yev
+  namespace: presales
+spec:
+  guestCustomization:
+    users:
+      - admin: true
+        groups:
+          - docker
+          - sudo
+        shell: /bin/bash
+        sshAuthorizedKeys:
+          - sdfsdfsdf
+          - ssh-key-2
+        name: yev
+    bootstrapCommands: |-
+      - bash -c "apt update"
+      - bash -c "apt install apache2"
+  loadBalancing:
+    enabled: true
+    exposure: External
+    ports:
+      - name: http
+        port: 80
+        protocol: TCP
+        targetPort: 80
+  baseName: yev-demo
+  count: 3
+  os: ubuntu-24.04
+  powerState: PoweredOn
+  size: medium
+  supervisorNamespace: demo-ns-vcpbz
+  compositeDeletePolicy: Background
