@@ -1,0 +1,21 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: sssss
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"aks-apm/undefined/Provider"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/aks-apm/undefined/Provider/sssss.yaml
+spec:
+  ignoreCrossplaneConstraints: false
+  packagePullPolicy: IfNotPresent
+  revisionActivationPolicy: Automatic
+  revisionHistoryLimit: 1
+  runtimeConfigRef:
+    apiVersion: pkg.crossplane.io/v1beta1
+    kind: DeploymentRuntimeConfig
+    name: default
+  skipDependencyResolution: false
+  package: sdfsdfsdfsdf
