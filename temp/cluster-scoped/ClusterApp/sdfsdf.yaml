@@ -1,0 +1,17 @@
+apiVersion: example.clustered.crossplane.io/v1
+kind: ClusterApp
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"namespace-scoped","basePath":"undefined"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/sdp
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/temp/cluster-scoped/ClusterApp/sdfsdf.yaml
+  name: sdfsdf
+spec:
+  image: sdfsdf
+  namespace: sdfsdfsdf
+  crossplane:
+    compositionRef:
+      name: clusterapp-templated-yaml
