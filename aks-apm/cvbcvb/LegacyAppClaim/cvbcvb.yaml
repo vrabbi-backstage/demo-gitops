@@ -1,0 +1,19 @@
+apiVersion: example.crossplane.io/v1
+kind: LegacyAppClaim
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"aks-apm/cvbcvb/LegacyAppClaim"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/server-room
+    terasky.backstage.io/system: cvbcvb
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/aks-apm/cvbcvb/LegacyAppClaim/cvbcvb.yaml
+  name: cvbcvb
+  namespace: cvbcvb
+spec:
+  image: cvbcvb
+  namespace: cvbcvb
+  compositeDeletePolicy: Background
+  compositionRef:
+    name: legacyapp-templated-yaml
