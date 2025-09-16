@@ -1,0 +1,15 @@
+apiVersion: kro.run/v1alpha1
+kind: Application
+metadata:
+  name: asd
+  namespace: cvbcvb
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"namespace-scoped","basePath":"cvbcvb"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/system: cvbcvb
+    terasky.backstage.io/source-file-url: https://github.com/vrabbi-backstage/demo-gitops/blob/main/cvbcvb/asd.yaml
+spec:
+  ingress:
+    enabled: true
+  image: nginx
