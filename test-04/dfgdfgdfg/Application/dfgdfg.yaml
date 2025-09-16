@@ -1,0 +1,17 @@
+apiVersion: kro.run/v1alpha1
+kind: Application
+metadata:
+  name: dfgdfg
+  namespace: dfgdfgdfg
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"test-04/cluster-scoped/Application"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/system: dfgdfgdfg
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/test-04/cluster-scoped/Application/dfgdfg.yaml
+spec:
+  ingress:
+    enabled: true
+  image: nginx
+  name: dfgdfgdfg
