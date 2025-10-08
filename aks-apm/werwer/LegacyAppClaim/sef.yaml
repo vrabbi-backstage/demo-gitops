@@ -1,0 +1,17 @@
+apiVersion: example.crossplane.io/v1
+kind: LegacyAppClaim
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"aks-apm/werwer/LegacyAppClaim"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/ts-devops
+    terasky.backstage.io/system: werwer
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/aks-apm/werwer/LegacyAppClaim/sef.yaml
+  name: sef
+  namespace: werwer
+spec:
+  image: werwer
+  namespace: wer
+  compositeDeletePolicy: Background
