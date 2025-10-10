@@ -8,7 +8,7 @@ metadata:
     terasky.backstage.io/owner: group:default/kubernetes-auto-ingested
     terasky.backstage.io/system: demo
     terasky.backstage.io/source-file-url: >-
-      https://github.com/vrabbi-backstage/demo-gitops/blob/main/demo-cluster/demo/WebApp/test.yaml
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/demo-cluster/demo/WebApp/test-webapp.yaml
   name: test-webapp
   namespace: demo
 spec:
