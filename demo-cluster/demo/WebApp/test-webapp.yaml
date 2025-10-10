@@ -9,7 +9,7 @@ metadata:
     terasky.backstage.io/system: demo
     terasky.backstage.io/source-file-url: >-
       https://github.com/vrabbi-backstage/demo-gitops/blob/main/demo-cluster/demo/WebApp/test.yaml
-  name: test
+  name: test-webapp
   namespace: demo
 spec:
   scaling:
