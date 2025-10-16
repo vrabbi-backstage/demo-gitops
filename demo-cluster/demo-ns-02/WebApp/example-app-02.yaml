@@ -2,19 +2,17 @@ apiVersion: example.crossplane.io/v1
 kind: WebApp
 metadata:
   annotations:
-    terasky.backstage.io/source-info: >-
-      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"demo-cluster/demo-ns-02/WebApp"}
-    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/source-info: '{"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"demo-cluster/demo-ns-02/WebApp"}'
+    terasky.backstage.io/add-to-catalog: "true"
     terasky.backstage.io/owner: group:default/kubernetes-auto-ingested
     terasky.backstage.io/system: demo-ns-02
-    terasky.backstage.io/source-file-url: >-
-      https://github.com/vrabbi-backstage/demo-gitops/blob/main/demo-cluster/demo-ns-02/WebApp/example-app-02.yaml
+    terasky.backstage.io/source-file-url: https://github.com/vrabbi-backstage/demo-gitops/blob/main/demo-cluster/demo-ns-02/WebApp/example-app-02.yaml
   name: example-app-02
   namespace: demo-ns-02
 spec:
   scaling:
-    enabled: false
+    enabled: true
     maxReplicas: 10
     minReplicas: 1
-  fqdn: webapp.example.com
-  image: nginx
+  fqdn: webapp-02.example.com
+  image: nginx:latest
