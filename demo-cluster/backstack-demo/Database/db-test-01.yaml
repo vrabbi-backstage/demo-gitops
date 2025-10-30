@@ -12,4 +12,4 @@ metadata:
 spec:
   highAvailability: false
   storageGB: 1
-  version: 17.3
+  version: 17.4
