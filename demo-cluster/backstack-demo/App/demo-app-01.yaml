@@ -10,7 +10,7 @@ metadata:
   name: demo-app-01
   namespace: backstack-demo
 spec:
-  image: nginx:stable-alpine3.21-slim
+  image: nginx:latest
   crossplane:
     compositionRef:
       name: app-pythonic
