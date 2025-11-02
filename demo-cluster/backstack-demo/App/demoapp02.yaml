@@ -8,8 +8,8 @@ metadata:
     terasky.backstage.io/owner: group:default/guests
     terasky.backstage.io/system: backstack-demo
     terasky.backstage.io/source-file-url: >-
-      https://github.com/vrabbi-backstage/demo-gitops/blob/main/demo-cluster/backstack-demo/App/demo-app-02.yaml
-  name: demo-app-02
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/demo-cluster/backstack-demo/App/demoapp02.yaml
+  name: demoapp02
   namespace: backstack-demo
 spec:
   image: nginx
