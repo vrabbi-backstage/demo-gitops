@@ -1,0 +1,18 @@
+apiVersion: example.crossplane.io/v1
+kind: App
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"demo-cluster/backstack-demo/App"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/guests
+    terasky.backstage.io/system: backstack-demo
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/demo-cluster/backstack-demo/App/demo-app-02.yaml
+  name: demo-app-02
+  namespace: backstack-demo
+spec:
+  image: nginx
+  crossplane:
+    compositionRef:
+      name: app-pythonic
