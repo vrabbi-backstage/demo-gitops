@@ -1,0 +1,19 @@
+apiVersion: example.crossplane.io/v1
+kind: WebApp
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"aks-apm/production/WebApp"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/all_users
+    terasky.backstage.io/system: production
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/aks-apm/production/WebApp/gabry-demo-01-ai.yaml
+  name: gabry-demo-01-ai
+  namespace: production
+spec:
+  fqdn: gabry.demo.terasky.com
+  image: nginx:latest
+  port: 8080
+  scaling:
+    enabled: false
