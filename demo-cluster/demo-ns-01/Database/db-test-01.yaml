@@ -2,16 +2,14 @@ apiVersion: demo.kubecon2025na.io/v1
 kind: Database
 metadata:
   annotations:
-    terasky.backstage.io/source-info: >-
-      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"demo-cluster/demo-ns-01/Database"}
-    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/source-info: '{"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"demo-cluster/demo-ns-01/Database"}'
+    terasky.backstage.io/add-to-catalog: "true"
     terasky.backstage.io/owner: group:default/guests
     terasky.backstage.io/system: demo-ns-01
-    terasky.backstage.io/source-file-url: >-
-      https://github.com/vrabbi-backstage/demo-gitops/blob/main/demo-cluster/demo-ns-01/Database/db-test-01.yaml
+    terasky.backstage.io/source-file-url: https://github.com/vrabbi-backstage/demo-gitops/blob/main/demo-cluster/demo-ns-01/Database/db-test-01.yaml
   name: db-test-01
   namespace: demo-ns-01
 spec:
   highAvailability: false
   storageGB: 1
-  version: 17.1
+  version: 17.4
