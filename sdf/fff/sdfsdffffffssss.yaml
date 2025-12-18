@@ -1,0 +1,15 @@
+apiVersion: example.crossplane.io/v1
+kind: LegacyAppClaim
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: '{"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"custom","basePath":"sdf/fff"}'
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/aws-playground-hybrid
+    terasky.backstage.io/system: sdfsdfsssssfffffssss
+    terasky.backstage.io/source-file-url: https://github.com/vrabbi-backstage/demo-gitops/blob/main/sdf/fff/sdfsdffffffssss.yaml
+  name: sdfsdffffffssss
+  namespace: sdfsdfsssssfffffssss
+spec:
+  image: fff
+  namespace: ssss
+  compositeDeletePolicy: Background
