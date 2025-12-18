@@ -1,26 +1,8 @@
-apiVersion: platform.example.io/v1
-kind: TektonPipeline
-metadata:
-  annotations:
-    terasky.backstage.io/source-info: '{"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"aks-apm/default/TektonPipeline"}'
-    terasky.backstage.io/add-to-catalog: 'true'
-    terasky.backstage.io/owner: group:default/sales-us
-    terasky.backstage.io/system: default
-    terasky.backstage.io/source-file-url: https://github.com/vrabbi-backstage/demo-gitops/blob/main/aks-apm/default/TektonPipeline/test-array-obj.yaml
-  name: test-array-obj
-  namespace: default
 spec:
   crossplane:
     compositionRef:
       name: test-kcl-example
   tasks:
-    - name: sdf
-      runAfter:
-        - sss
-      taskRef: sss
-    - name: sss
+    - name: sssasdasd
       taskRef: fff
-  workspaces:
-    - description: sdfsdf
-      name: sssssssssss
   pipelineName: sdf
