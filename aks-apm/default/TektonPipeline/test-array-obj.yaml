@@ -10,6 +10,9 @@ metadata:
   name: test-array-obj
   namespace: default
 spec:
+  crossplane:
+    compositionRef:
+      name: test-kcl-example
   tasks:
     - name: sdf
       runAfter:
