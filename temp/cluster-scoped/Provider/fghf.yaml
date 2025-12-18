@@ -1,0 +1,21 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: fghf
+  annotations:
+    terasky.backstage.io/source-info: >-
+      {"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"namespace-scoped","basePath":"undefined"}
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/source-file-url: >-
+      https://github.com/vrabbi-backstage/demo-gitops/blob/main/cluster-scoped/fghf.yaml
+spec:
+  ignoreCrossplaneConstraints: true
+  packagePullPolicy: IfNotPresent
+  revisionActivationPolicy: Automatic
+  revisionHistoryLimit: 1
+  runtimeConfigRef:
+    apiVersion: pkg.crossplane.io/v1beta1
+    kind: DeploymentRuntimeConfig
+    name: default
+  skipDependencyResolution: false
+  package: fghfgh
