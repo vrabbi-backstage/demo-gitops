@@ -3,10 +3,11 @@ kind: TektonPipeline
 metadata:
   annotations:
     terasky.backstage.io/source-info: '{"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"aks-apm/default/TektonPipeline"}'
-    terasky.backstage.io/add-to-catalog: 'true'
     terasky.backstage.io/owner: group:default/sales-us
     terasky.backstage.io/system: default
     terasky.backstage.io/source-file-url: https://github.com/vrabbi-backstage/demo-gitops/blob/main/aks-apm/default/TektonPipeline/test-array-obj.yaml
+    asd: test-example
+    sdfsdf: sdfsdf
   name: test-array-obj
   namespace: default
 spec:
@@ -22,5 +23,7 @@ spec:
       taskRef: fff
   workspaces:
     - description: sdfsdf
-      name: sssssssssss
+      name: ssssssssssssdfsdf
+    - description: fff
+      name: sss
   pipelineName: sdf
