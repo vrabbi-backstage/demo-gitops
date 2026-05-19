@@ -1,0 +1,16 @@
+apiVersion: demo.terasky.com/v1alpha1
+kind: PostgreSQLDatabase
+metadata:
+  annotations:
+    spectrocloud.backstage.io/source-info: '{"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"kubestage-demo-01/default/PostgreSQLDatabase"}'
+    spectrocloud.backstage.io/add-to-catalog: 'true'
+    spectrocloud.backstage.io/owner: group:default/scott-test
+    spectrocloud.backstage.io/system: default
+    spectrocloud.backstage.io/source-file-url: https://github.com/vrabbi-backstage/demo-gitops/blob/main/kubestage-demo-01/default/PostgreSQLDatabase/demo.yaml
+  name: demo
+  namespace: default
+spec:
+  highAvailability: false
+  storageGB: 10
+  version: 16.7
+  compositeDeletePolicy: Background
