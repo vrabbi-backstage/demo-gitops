@@ -11,6 +11,6 @@ metadata:
   namespace: default
 spec:
   highAvailability: true
-  storageGB: 20
-  version: 16.7
+  storageGB: 50
+  version: 16.4
   compositeDeletePolicy: Background
