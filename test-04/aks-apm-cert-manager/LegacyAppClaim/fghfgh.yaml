@@ -1,0 +1,14 @@
+apiVersion: example.crossplane.io/v1
+kind: LegacyAppClaim
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: '{"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=vrabbi-backstage&repo=demo-gitops","gitLayout":"cluster-scoped","basePath":"aks-apm/aks-apm-cert-manager/LegacyAppClaim"}'
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/payoneergcpproject
+    terasky.backstage.io/system: aks-apm-cert-manager
+    terasky.backstage.io/source-file-url: https://github.com/vrabbi-backstage/demo-gitops/blob/main/test-04/aks-apm-cert-manager/LegacyAppClaim/fghfgh.yaml
+  name: fghfgh
+  namespace: aks-apm-cert-manager
+spec:
+  image: fghfgh
+  compositeDeletePolicy: Background
