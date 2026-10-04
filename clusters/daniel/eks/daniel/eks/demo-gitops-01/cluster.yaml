@@ -1,0 +1,39 @@
+# Spectro Cloud Cluster - demo-gitops-01
+# Generated from Backstage Cluster Deployment Wizard
+# Scope: Namespace-scoped
+
+apiVersion: cluster.palette.m.crossplane.io/v1alpha1
+kind: Eks
+metadata:
+  name: demo-gitops-01
+spec:
+  forProvider:
+    name: demo-gitops-01
+    cloudAccountId: "6a1560e5a44d4494cc6e95e2"
+    context: project
+    clusterProfile:
+      - id: "6a1d8f281ea950194c9e4988"
+    cloudConfig:
+      - region: "eu-west-1"
+        endpointAccess: "private_and_public"
+        publicAccessCidrs:
+          - "0.0.0.0/0"
+        privateAccessCidrs:
+          - "0.0.0.0/0"
+        sshKeyName: "daniel-wsl"
+    machinePool:
+      - name: "control-plane-pool"
+        controlPlane: true
+      - name: "worker-pool-1"
+        controlPlane: false
+        instanceType: "c4.xlarge"
+        diskSizeGb: 60
+        count: 1
+        min: 1
+        max: 3
+        capacityType: "on-demand"
+    skipCompletion: true
+  providerConfigRef:
+    name: default
+  writeConnectionSecretToRef:
+    name: demo-gitops-01-connection
