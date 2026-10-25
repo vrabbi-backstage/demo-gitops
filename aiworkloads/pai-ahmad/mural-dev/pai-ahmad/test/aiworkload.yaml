@@ -1,0 +1,85 @@
+apiVersion: spectrocloud.com/v1alpha1
+kind: AIWorkload
+metadata:
+  name: test
+  namespace: pai-ahmad
+  labels:
+    palette.ai/project: pai-ahmad
+    palette.ai/tenant: ahmad-internal
+    palette.ai/aiworkload-type: app
+spec:
+  profileBundles:
+    - name: nims-stack-airgap-proxy
+      namespace: pai-ahmad
+      cloudType: edge-native
+    - name: nims-stack-airgap-proxy
+      namespace: pai-system
+      cloudType: edge-native
+    - name: nims-stack-airgap-proxy
+      namespace: tenant-ahmad-internal
+      cloudType: edge-native
+  workloadDeploymentConfigs:
+    - name: nims-stack-airgap-proxy
+      profileBundleRef:
+        name: nims-stack-airgap-proxy
+        namespace: pai-ahmad
+      workloadProfileRef:
+        name: kube-prometheus-stack-apnf@v2.0.12
+        namespace: pai-ahmad
+      targetWorkload:
+        name: test
+        namespace: pai-ahmad
+    - name: nims-stack-airgap-proxy-2
+      profileBundleRef:
+        name: nims-stack-airgap-proxy
+        namespace: pai-ahmad
+      workloadProfileRef:
+        name: nims-stack-apnf@v2.0.12
+        namespace: pai-ahmad
+      targetWorkload:
+        name: test-2
+        namespace: pai-ahmad
+    - name: nims-stack-airgap-proxy-3
+      profileBundleRef:
+        name: nims-stack-airgap-proxy
+        namespace: pai-system
+      workloadProfileRef:
+        name: kube-prometheus-stack-apnf@v2.0.12
+        namespace: pai-system
+      targetWorkload:
+        name: test-3
+        namespace: pai-ahmad
+    - name: nims-stack-airgap-proxy-4
+      profileBundleRef:
+        name: nims-stack-airgap-proxy
+        namespace: pai-system
+      workloadProfileRef:
+        name: nims-stack-apnf@v2.0.12
+        namespace: pai-system
+      targetWorkload:
+        name: test-4
+        namespace: pai-ahmad
+    - name: nims-stack-airgap-proxy-5
+      profileBundleRef:
+        name: nims-stack-airgap-proxy
+        namespace: tenant-ahmad-internal
+      workloadProfileRef:
+        name: kube-prometheus-stack-apnf@v2.0.12
+        namespace: tenant-ahmad-internal
+      targetWorkload:
+        name: test-5
+        namespace: pai-ahmad
+    - name: nims-stack-airgap-proxy-6
+      profileBundleRef:
+        name: nims-stack-airgap-proxy
+        namespace: tenant-ahmad-internal
+      workloadProfileRef:
+        name: nims-stack-apnf@v2.0.12
+        namespace: tenant-ahmad-internal
+      targetWorkload:
+        name: test-6
+        namespace: pai-ahmad
+  deletionPolicy: delete
+  computePoolRef:
+    name: test-asdf
+    namespace: tenant-ahmad-internal
