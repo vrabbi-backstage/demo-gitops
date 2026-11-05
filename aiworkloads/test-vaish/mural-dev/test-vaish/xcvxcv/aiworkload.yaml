@@ -1,0 +1,28 @@
+apiVersion: spectrocloud.com/v1alpha1
+kind: AIWorkload
+metadata:
+  name: xcvxcv
+  namespace: test-vaish
+  labels:
+    palette.ai/project: test-vaish
+    palette.ai/tenant: default
+    palette.ai/aiworkload-type: app
+spec:
+  profileBundles:
+    - name: system-hello
+      namespace: pai-system
+  workloadDeploymentConfigs:
+    - name: system-hello
+      profileBundleRef:
+        name: system-hello
+        namespace: pai-system
+      workloadProfileRef:
+        name: system-hello-cpnf@v1.0.0
+        namespace: pai-system
+      targetWorkload:
+        name: xcvxcv
+        namespace: test-vaish
+  deletionPolicy: delete
+  computePoolRef:
+    name: temp-app-cp
+    namespace: test-vaish
