@@ -1,0 +1,86 @@
+# KubeVirt virtual machine - demo-vm
+# Cluster: backstage-demo-vms
+# Generated from Backstage VM Deployment Wizard
+# Power actions change spec.runStrategy; have your GitOps controller ignore that field.
+
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: demo-vm
+  namespace: default
+  labels:
+    app.kubernetes.io/managed-by: backstage
+  annotations:
+    spectrocloud.backstage.io/managed-by: gitops
+    spectrocloud.backstage.io/image: vmo-golden-images/cirros-dv
+    backstage.io/owner: group:default/362c48cc-5bd8-4790-89e8-2dca75607e87
+    spectrocloud.backstage.io/gitops-source: github.com/vrabbi-backstage/demo-gitops#vms/scott/backstage-demo-vms/default/demo-vm/vm.yaml
+    spectrocloud.backstage.io/vmo-template: cirros-dv
+spec:
+  runStrategy: Always
+  instancetype:
+    kind: VirtualMachineClusterInstancetype
+    name: u1.xlarge
+  preference:
+    kind: VirtualMachineClusterPreference
+    name: cirros
+  dataVolumeTemplates:
+    - metadata:
+        name: demo-vm-rootdisk
+      spec:
+        source:
+          pvc:
+            namespace: vmo-golden-images
+            name: cirros-dv
+        storage:
+          storageClassName: demo
+          resources:
+            requests:
+              storage: 25Gi
+    - metadata:
+        name: demo-vm-data1
+      spec:
+        source:
+          blank: {}
+        storage:
+          storageClassName: spectro-storage-class
+          resources:
+            requests:
+              storage: 10Gi
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: demo-vm
+        kubevirt.io/vm: demo-vm
+    spec:
+      domain:
+        devices:
+          disks:
+            - name: rootdisk
+              bootOrder: 1
+              disk:
+                bus: virtio
+            - name: data1
+              disk:
+                bus: virtio
+            - name: cloudinitdisk
+              disk:
+                bus: virtio
+          interfaces:
+            - name: default
+              masquerade: {}
+      networks:
+        - name: default
+          pod: {}
+      volumes:
+        - name: rootdisk
+          dataVolume:
+            name: demo-vm-rootdisk
+        - name: data1
+          dataVolume:
+            name: demo-vm-data1
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              hostname: demo-vm
