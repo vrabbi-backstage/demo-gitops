@@ -1,0 +1,51 @@
+# Spectro Cloud Cluster - ojhi
+# Generated from Backstage Cluster Deployment Wizard
+# Scope: Namespace-scoped
+
+apiVersion: cluster.palette.m.crossplane.io/v1alpha1
+kind: Eks
+metadata:
+  name: ojhi
+spec:
+  forProvider:
+    name: ojhi
+    cloudAccountId: "6a1560e5a44d4494cc6e95e2"
+    context: project
+    clusterProfile:
+      - id: "692467f0a1a66fc000d2b1eb"
+        variables:
+          aws_account_id: "dcgfdgh"
+          aws_hosted_zone_1: "dfgdfh"
+          grafana_admin_password: "ghjgh"
+          velero_s3_bucket_name: "ijhkjnh"
+          aws_acm_certificate_id: "ljhkjbhk"
+          eks_additional_security_group_id: "khbkhbjk"
+          eks_subnet_a_id: "khvbjkhb"
+          eks_subnet_b_id: "khbvkhb"
+          eks_subnet_c_id: "kjbkhb"
+          eks_vpc_id: "kjbkjb"
+          env: "kjbkhb"
+    cloudConfig:
+      - region: "eu-west-1"
+        endpointAccess: "private_and_public"
+        publicAccessCidrs:
+          - "0.0.0.0/0"
+        privateAccessCidrs:
+          - "0.0.0.0/0"
+        sshKeyName: "daniel-wsl"
+    machinePool:
+      - name: "control-plane-pool"
+        controlPlane: true
+      - name: "worker-pool-1"
+        controlPlane: false
+        instanceType: "a1.4xlarge"
+        diskSizeGb: 60
+        count: 1
+        min: 1
+        max: 3
+        capacityType: "on-demand"
+    skipCompletion: true
+  providerConfigRef:
+    name: default
+  writeConnectionSecretToRef:
+    name: ojhi-connection
