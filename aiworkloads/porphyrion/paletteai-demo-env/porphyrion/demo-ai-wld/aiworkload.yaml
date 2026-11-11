@@ -1,0 +1,105 @@
+apiVersion: spectrocloud.com/v1alpha1
+kind: AIWorkload
+metadata:
+  name: demo-ai-wld
+  namespace: porphyrion
+  labels:
+    palette.ai/project: porphyrion
+    palette.ai/tenant: galaxy
+    palette.ai/aiworkload-type: app
+spec:
+  profileBundles:
+    - name: vllm-prod-stack-proxy
+      namespace: porphyrion
+      cloudType: edge-native
+    - name: vllm-prod-stack-proxy
+      namespace: pai-system
+      cloudType: edge-native
+    - name: vllm-prod-stack-proxy
+      namespace: tenant-galaxy
+      cloudType: edge-native
+  workloadDeploymentConfigs:
+    - name: vllm-prod-stack-proxy
+      profileBundleRef:
+        name: vllm-prod-stack-proxy
+        namespace: porphyrion
+      workloadProfileRef:
+        name: kube-prometheus-stack-cpnf@v4.0.0
+        namespace: porphyrion
+      targetWorkload:
+        name: demo-ai-wld
+        namespace: porphyrion
+    - name: vllm-prod-stack-proxy-2
+      profileBundleRef:
+        name: vllm-prod-stack-proxy
+        namespace: porphyrion
+      workloadProfileRef:
+        name: vllm-gateway-cpnf@v4.0.0
+        namespace: porphyrion
+      targetWorkload:
+        name: demo-ai-wld-2
+        namespace: porphyrion
+    - name: vllm-prod-stack-proxy-3
+      profileBundleRef:
+        name: vllm-prod-stack-proxy
+        namespace: porphyrion
+      workloadProfileRef:
+        name: vllm-prod-stack-cpnf@v4.0.0
+        namespace: porphyrion
+      targetWorkload:
+        name: demo-ai-wld-3
+        namespace: porphyrion
+    - name: vllm-prod-stack-proxy-4
+      profileBundleRef:
+        name: vllm-prod-stack-proxy
+        namespace: pai-system
+      workloadProfileRef:
+        name: kube-prometheus-stack-cpnf@v2.1.21
+        namespace: pai-system
+      targetWorkload:
+        name: demo-ai-wld-4
+        namespace: porphyrion
+    - name: vllm-prod-stack-proxy-5
+      profileBundleRef:
+        name: vllm-prod-stack-proxy
+        namespace: pai-system
+      workloadProfileRef:
+        name: vllm-prod-stack-cpnf@v2.1.21
+        namespace: pai-system
+      targetWorkload:
+        name: demo-ai-wld-5
+        namespace: porphyrion
+    - name: vllm-prod-stack-proxy-6
+      profileBundleRef:
+        name: vllm-prod-stack-proxy
+        namespace: tenant-galaxy
+      workloadProfileRef:
+        name: kube-prometheus-stack-cpnf@v4.0.0
+        namespace: tenant-galaxy
+      targetWorkload:
+        name: demo-ai-wld-6
+        namespace: porphyrion
+    - name: vllm-prod-stack-proxy-7
+      profileBundleRef:
+        name: vllm-prod-stack-proxy
+        namespace: tenant-galaxy
+      workloadProfileRef:
+        name: vllm-gateway-cpnf@v4.0.0
+        namespace: tenant-galaxy
+      targetWorkload:
+        name: demo-ai-wld-7
+        namespace: porphyrion
+    - name: vllm-prod-stack-proxy-8
+      profileBundleRef:
+        name: vllm-prod-stack-proxy
+        namespace: tenant-galaxy
+      workloadProfileRef:
+        name: vllm-prod-stack-cpnf@v4.0.0
+        namespace: tenant-galaxy
+      targetWorkload:
+        name: demo-ai-wld-8
+        namespace: porphyrion
+  deletionPolicy: delete
+  computePoolRef:
+    name: ai-vms
+    namespace: tenant-galaxy
