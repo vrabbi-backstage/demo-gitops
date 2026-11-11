@@ -1,0 +1,85 @@
+apiVersion: spectrocloud.com/v1alpha1
+kind: AIWorkload
+metadata:
+  name: kjbkjb
+  namespace: andromeda
+  labels:
+    palette.ai/project: andromeda
+    palette.ai/tenant: galaxy
+    palette.ai/aiworkload-type: app
+spec:
+  profileBundles:
+    - name: nims-stack-proxy
+      namespace: andromeda
+      cloudType: edge-native
+    - name: nims-stack-proxy
+      namespace: pai-system
+      cloudType: edge-native
+    - name: nims-stack-proxy
+      namespace: tenant-galaxy
+      cloudType: edge-native
+  workloadDeploymentConfigs:
+    - name: nims-stack-proxy
+      profileBundleRef:
+        name: nims-stack-proxy
+        namespace: andromeda
+      workloadProfileRef:
+        name: kube-prometheus-stack-cpnf@v2.0.23
+        namespace: andromeda
+      targetWorkload:
+        name: kjbkjb
+        namespace: andromeda
+    - name: nims-stack-proxy-2
+      profileBundleRef:
+        name: nims-stack-proxy
+        namespace: andromeda
+      workloadProfileRef:
+        name: nims-stack-cpnf@v2.0.23
+        namespace: andromeda
+      targetWorkload:
+        name: kjbkjb-2
+        namespace: andromeda
+    - name: nims-stack-proxy-3
+      profileBundleRef:
+        name: nims-stack-proxy
+        namespace: pai-system
+      workloadProfileRef:
+        name: kube-prometheus-stack-cpnf@v2.0.23
+        namespace: pai-system
+      targetWorkload:
+        name: kjbkjb-3
+        namespace: andromeda
+    - name: nims-stack-proxy-4
+      profileBundleRef:
+        name: nims-stack-proxy
+        namespace: pai-system
+      workloadProfileRef:
+        name: nims-stack-cpnf@v2.0.23
+        namespace: pai-system
+      targetWorkload:
+        name: kjbkjb-4
+        namespace: andromeda
+    - name: nims-stack-proxy-5
+      profileBundleRef:
+        name: nims-stack-proxy
+        namespace: tenant-galaxy
+      workloadProfileRef:
+        name: kube-prometheus-stack-cpnf@v2.0.23
+        namespace: tenant-galaxy
+      targetWorkload:
+        name: kjbkjb-5
+        namespace: andromeda
+    - name: nims-stack-proxy-6
+      profileBundleRef:
+        name: nims-stack-proxy
+        namespace: tenant-galaxy
+      workloadProfileRef:
+        name: nims-stack-cpnf@v2.0.23
+        namespace: tenant-galaxy
+      targetWorkload:
+        name: kjbkjb-6
+        namespace: andromeda
+  deletionPolicy: delete
+  computePoolRef:
+    name: shared-rtx-pool
+    namespace: andromeda
