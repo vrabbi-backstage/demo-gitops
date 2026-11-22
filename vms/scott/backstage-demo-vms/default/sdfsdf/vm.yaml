@@ -1,0 +1,69 @@
+# KubeVirt virtual machine - sdfsdf
+# Cluster: backstage-demo-vms
+# Generated from Backstage VM Deployment Wizard
+# Power actions change spec.runStrategy; have your GitOps controller ignore that field.
+
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: sdfsdf
+  namespace: default
+  labels:
+    app.kubernetes.io/managed-by: backstage
+  annotations:
+    spectrocloud.backstage.io/managed-by: gitops
+    spectrocloud.backstage.io/image: vmo-golden-images/cirros-dv
+    backstage.io/owner: group:default/362c48cc-5bd8-4790-89e8-2dca75607e87
+    spectrocloud.backstage.io/gitops-source: github.com/vrabbi-backstage/demo-gitops#vms/scott/backstage-demo-vms/default/sdfsdf/vm.yaml
+    spectrocloud.backstage.io/vmo-template: cirros-dv
+spec:
+  runStrategy: Halted
+  instancetype:
+    kind: VirtualMachineClusterInstancetype
+    name: u1.small
+  preference:
+    kind: VirtualMachineClusterPreference
+    name: cirros
+  dataVolumeTemplates:
+    - metadata:
+        name: sdfsdf-rootdisk
+      spec:
+        source:
+          pvc:
+            namespace: vmo-golden-images
+            name: cirros-dv
+        storage:
+          resources:
+            requests:
+              storage: 20Gi
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: sdfsdf
+        kubevirt.io/vm: sdfsdf
+    spec:
+      domain:
+        devices:
+          disks:
+            - name: rootdisk
+              bootOrder: 1
+              disk:
+                bus: virtio
+            - name: cloudinitdisk
+              disk:
+                bus: virtio
+          interfaces:
+            - name: default
+              masquerade: {}
+      networks:
+        - name: default
+          pod: {}
+      volumes:
+        - name: rootdisk
+          dataVolume:
+            name: sdfsdf-rootdisk
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              hostname: sdfsdf
