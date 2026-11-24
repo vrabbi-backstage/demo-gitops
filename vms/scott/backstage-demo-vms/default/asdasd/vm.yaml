@@ -1,0 +1,99 @@
+# KubeVirt virtual machine - asdasd
+# Cluster: backstage-demo-vms
+# Generated from Backstage VM Deployment Wizard
+# Power actions change spec.runStrategy; have your GitOps controller ignore that field.
+
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: asdasd
+  namespace: default
+  labels:
+    app.kubernetes.io/managed-by: backstage
+  annotations:
+    spectrocloud.backstage.io/managed-by: gitops
+    spectrocloud.backstage.io/image: vmo-golden-images/cirros-dv
+    backstage.io/owner: group:default/362c48cc-5bd8-4790-89e8-2dca75607e87
+    spectrocloud.backstage.io/gitops-source: github.com/vrabbi-backstage/demo-gitops#vms/scott/backstage-demo-vms/default/asdasd/vm.yaml
+    spectrocloud.backstage.io/vmo-template: cirros-dv
+spec:
+  runStrategy: Halted
+  instancetype:
+    kind: VirtualMachineClusterInstancetype
+    name: cx1.2xlarge
+  preference:
+    kind: VirtualMachineClusterPreference
+    name: cirros
+  dataVolumeTemplates:
+    - metadata:
+        name: asdasd-rootdisk
+      spec:
+        source:
+          pvc:
+            namespace: vmo-golden-images
+            name: cirros-dv
+        storage:
+          resources:
+            requests:
+              storage: 20Gi
+    - metadata:
+        name: asdasd-s
+      spec:
+        source:
+          blank: {}
+        storage:
+          resources:
+            requests:
+              storage: 10Gi
+    - metadata:
+        name: asdasd-fdata2
+      spec:
+        source:
+          blank: {}
+        storage:
+          resources:
+            requests:
+              storage: 10Gi
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: asdasd
+        kubevirt.io/vm: asdasd
+    spec:
+      domain:
+        devices:
+          disks:
+            - name: rootdisk
+              bootOrder: 1
+              disk:
+                bus: virtio
+            - name: s
+              disk:
+                bus: virtio
+            - name: fdata2
+              disk:
+                bus: virtio
+            - name: cloudinitdisk
+              disk:
+                bus: virtio
+          interfaces:
+            - name: default
+              masquerade: {}
+      networks:
+        - name: default
+          pod: {}
+      volumes:
+        - name: rootdisk
+          dataVolume:
+            name: asdasd-rootdisk
+        - name: s
+          dataVolume:
+            name: asdasd-s
+        - name: fdata2
+          dataVolume:
+            name: asdasd-fdata2
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              hostname: asdasd
